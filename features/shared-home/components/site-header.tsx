@@ -46,6 +46,8 @@ export function SiteHeader({ activeItem }: SiteHeaderProps) {
     return item?.key
   }, [activeItem, pathname])
 
+
+
   return (
     <header className="relative w-full overflow-hidden bg-[#001222]">
       <div className="mx-auto flex h-[128px] max-w-[1512px] items-center justify-between px-6 lg:px-[100px]">
