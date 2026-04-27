@@ -1,14 +1,14 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Input } from "@/components/ui/input"
+import { PrimaryButton } from "@/components/ui/primary-button"
+import { Textarea } from "@/components/ui/textarea"
+import { ContactInfoCard } from "./contact-info-card"
+import { getContactFaqs } from "@/features/contact/services/contact-faqs.service"
+import { SectionShell } from "@/features/shared-home"
+import { Mail, MapPin, Phone, Send, SendHorizonal } from "lucide-react"
+import { getTranslations } from "next-intl/server"
 import Image from "next/image"
 import type { ReactNode } from "react"
-import { PrimaryButton } from "@/components/ui/primary-button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Link } from "@/i18n/navigation"
-import { getTranslations } from "next-intl/server"
-import { Camera, CirclePlay, MapPin, Phone, Send, Mail, SendHorizonal } from "lucide-react"
-import { getContactFaqs } from "@/features/contact/services/contact-faqs.service"
-import { SectionShell, SiteHeader, SiteFooter } from "@/features/shared-home"
 
 export async function ContactPage() {
   const t = await getTranslations("Landing.contact")
@@ -125,7 +125,7 @@ export async function ContactPage() {
             {faqs.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id} className="border-b border-[#d4d4d4]">
                 <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-                <div className="flex items-center gap-1 text-[18px] leading-normal font-semibold text-[#262626]">
+                  <div className="flex items-center gap-1 text-[18px] leading-normal font-semibold text-[#262626]">
                     <span className="bg-[linear-gradient(270deg,#032C44_0%,#41A0CA_100%)] bg-clip-text text-[20px] font-extrabold text-transparent">
                       Q.
                     </span>
@@ -141,24 +141,6 @@ export async function ContactPage() {
         </div>
       </SectionShell>
     </main>
-  )
-}
-
-type ContactInfoCardProps = {
-  icon: ReactNode
-  label: string
-  value: string
-}
-
-function ContactInfoCard({ icon, label, value }: ContactInfoCardProps) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-6 px-6 py-8 text-center text-[#f5f5f5] md:border-r md:border-[#40A0CA] md:last:border-r-0">
-      {icon}
-      <div className="space-y-2">
-        <p className="text-sm leading-[1.16] text-[#d4d4d4]">{label}</p>
-        <p className="text-xl leading-normal">{value}</p>
-      </div>
-    </div>
   )
 }
 

@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { AuthFieldGroup, AuthFieldRow, AuthPrimaryCta } from "./auth-card-wrapper"
+import { AuthFieldGroup } from "./auth-field-group"
+import { AuthFieldRow } from "./auth-field-row"
+import { AuthPrimaryCta } from "./auth-primary-cta"
 
 type Props = {
   userTabLabel: string

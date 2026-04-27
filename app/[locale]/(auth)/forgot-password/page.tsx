@@ -1,5 +1,8 @@
 import { getTranslations } from "next-intl/server"
-import { AuthCardWrapper, AuthFieldGroup, AuthFieldRow, AuthPrimaryCta } from "@/features/auth/components/auth-card-wrapper"
+import { AuthCardWrapper } from "@/features/auth/components/auth-card-wrapper"
+import { AuthFieldGroup } from "@/features/auth/components/auth-field-group"
+import { AuthFieldRow } from "@/features/auth/components/auth-field-row"
+import { AuthPrimaryCta } from "@/features/auth/components/auth-primary-cta"
 
 export default async function ForgotPasswordPage() {
   const t = await getTranslations("Auth.forgotPassword")
