@@ -5,6 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 import { DirectionProvider } from "@/components/ui/direction";
 import { routing } from "@/i18n/routing";
+import { SiteHeader, SiteFooter } from "@/features/shared-home";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -58,10 +59,14 @@ export default async function LocaleLayout({ children, params }: Props) {
       dir={direction}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
+          <SiteHeader />
           <DirectionProvider dir={direction} direction={direction}>
-            {children}
+            <main className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
           </DirectionProvider>
         </NextIntlClientProvider>
       </body>

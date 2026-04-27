@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server"
-import { FooterSection } from "@/features/footer"
 import { ProcessSection } from "@/features/process"
 import { SectionShell, SiteHeader } from "@/features/shared-home"
 import { SupportSection } from "@/features/support"
@@ -32,9 +31,6 @@ export async function AboutPage() {
 
   return (
     <main className="flex-1 bg-[#f8fbff]">
-      <SectionShell className="bg-[linear-gradient(180deg,#001222_0%,#05233a_100%)] py-6">
-        <SiteHeader activeItem="about" />
-      </SectionShell>
 
       <SectionShell className="bg-white py-[70px]">
         <div className="grid items-center gap-8 lg:grid-cols-2">
@@ -67,7 +63,6 @@ export async function AboutPage() {
       </SectionShell>
 
       <SupportSection />
-      <FooterSection />
     </main>
   )
 }

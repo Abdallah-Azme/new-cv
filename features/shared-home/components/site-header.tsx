@@ -37,12 +37,21 @@ export function SiteHeader({ activeItem }: SiteHeaderProps) {
   const currentLocaleOption = LOCALE_OPTIONS.find((option) => option.locale === currentLocale) ?? LOCALE_OPTIONS[0]
   const pathname = usePathname()
 
+  const activeNav = React.useMemo(() => {
+    if (activeItem) return activeItem
+    const item = NAV_ITEMS.find((item) => {
+      if (item.href === "/") return pathname === "/"
+      return pathname.startsWith(item.href)
+    })
+    return item?.key
+  }, [activeItem, pathname])
+
   return (
-    <header className="relative w-full bg-[#001222]">
+    <header className="relative w-full overflow-hidden bg-[#001222]">
       <div className="mx-auto flex h-[128px] max-w-[1512px] items-center justify-between px-6 lg:px-[100px]">
-        {/* Background Glows - Relative to the full width header */}
-        <div className="pointer-events-none absolute top-0 -left-[10%] h-full w-[40%] bg-[#80CDF6] opacity-10 blur-[120px]" />
-        <div className="pointer-events-none absolute top-0 -right-[10%] h-full w-[40%] bg-[#80CDF6] opacity-10 blur-[120px]" />
+        {/* Background Glows - Subtler as per design */}
+        <div className="pointer-events-none absolute top-0 -start-[10%] h-full w-[40%] bg-[#80CDF6] opacity-10 blur-[120px]" />
+        <div className="pointer-events-none absolute top-0 -end-[10%] h-full w-[40%] bg-[#80CDF6] opacity-10 blur-[120px]" />
 
         <Link href="/" aria-label={t("brand")} className="relative z-10 shrink-0">
           <Image src="/home/hero/hero-logo.svg" alt={t("brand")} width={64} height={64} className="h-14 w-14 lg:h-16 lg:w-16" />
@@ -56,7 +65,7 @@ export function SiteHeader({ activeItem }: SiteHeaderProps) {
                 href={item.href}
                 className={cn(
                   "px-2 text-[16px] leading-[1.16] font-normal text-white transition-colors hover:text-[#7CCEF3]",
-                  activeItem === item.key && "text-[#40A0CA]"
+                  activeNav === item.key && "text-[#40A0CA]"
                 )}
               >
                 {t(`nav.${item.key}`)}

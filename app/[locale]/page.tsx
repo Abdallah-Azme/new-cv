@@ -1,5 +1,4 @@
 import { CategoriesSection } from "@/features/categories"
-import { FooterSection } from "@/features/footer"
 import { HeroSection } from "@/features/hero"
 import { JobsSection } from "@/features/jobs"
 import { NewsSection } from "@/features/news"
@@ -18,7 +17,6 @@ export default async function Home() {
       <TestimonialsSection />
       <NewsSection />
       <SupportSection />
-      <FooterSection />
     </main>
   )
 }

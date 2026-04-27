@@ -27,11 +27,6 @@ export async function NewsPage() {
 
   return (
     <main className="flex-1 bg-white">
-      <SectionShell className="relative overflow-hidden bg-[linear-gradient(180deg,#001222_0%,#032c44_100%)] py-8">
-        <div className="pointer-events-none absolute -top-[220px] -left-[130px] h-[500px] w-[500px] rounded-full bg-[#80cdf6] blur-[200px]" />
-        <div className="pointer-events-none absolute -top-[220px] -right-[130px] h-[500px] w-[500px] rounded-full bg-[#80cdf6] blur-[200px]" />
-        <SiteHeader activeItem="news" />
-      </SectionShell>
 
       <SectionShell className="py-[71px] pb-[98px]">
         <div className="space-y-16">
@@ -95,50 +90,6 @@ export async function NewsPage() {
         </div>
       </SectionShell>
 
-      <footer className="relative overflow-hidden bg-[#001222] py-[56px] text-white">
-        <SectionShell className="relative bg-transparent py-0">
-          <div className="border-b border-[#003F64] pb-6">
-            <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_1fr]">
-              <div className="space-y-5">
-                <Image src="/home/hero/hero-logo.svg" alt={footerT("brand")} width={92} height={124} className="h-[124px] w-[92px]" />
-                <p className="max-w-[474px] text-base leading-normal text-[#f5f5f5]">{contactT("footerDescription")}</p>
-                <div className="flex items-center gap-6 text-[#f5f5f5]">
-                  <Camera className="h-5 w-5" />
-                  <SendHorizonal className="h-5 w-5" />
-                  <CirclePlay className="h-5 w-5" />
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-[20px] font-bold text-[#40A0CA]">{footerT("quickLinks.title")}</h3>
-                <div className="space-y-4 text-base text-[#f5f5f5]">
-                  <Link href="/about">{footerT("quickLinks.items.about")}</Link>
-                  <Link href="/jobs">{footerT("quickLinks.items.jobs")}</Link>
-                  <span>{footerT("quickLinks.items.services")}</span>
-                  <Link href="/contact">{footerT("quickLinks.items.contact")}</Link>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-[20px] font-bold text-[#40A0CA]">{footerT("contact.title")}</h3>
-                <div className="space-y-4 text-base text-[#f5f5f5]">
-                  <p>{footerT("contact.phone")}</p>
-                  <p>{footerT("contact.email")}</p>
-                  <p>{footerT("contact.address")}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-sm text-[#f5f5f5]">
-            <p>{footerT("copyright")}</p>
-            <div className="flex items-center gap-4">
-              <span>{contactT("legal.terms")}</span>
-              <span className="h-4 w-px bg-[#40A0CA]" />
-              <span>{contactT("legal.faqs")}</span>
-              <span className="h-4 w-px bg-[#40A0CA]" />
-              <span>{contactT("legal.privacy")}</span>
-            </div>
-          </div>
-        </SectionShell>
-      </footer>
     </main>
   )
 }

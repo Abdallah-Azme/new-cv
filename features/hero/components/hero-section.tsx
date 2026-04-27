@@ -30,10 +30,8 @@ export async function HeroSection() {
         aria-hidden
       />
 
-      <div className="relative pt-[32px]">
-        <SiteHeader activeItem="home" />
-
-        <div className="mt-[176px] flex flex-col items-center gap-[48px] pb-[30px]">
+      <div className="relative">
+        <div className="mt-[48px] flex flex-col items-center gap-[48px] pb-[30px]">
           <div className="flex flex-col items-center gap-4">
             <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.25)] px-4 py-2 text-[12px] leading-[1.16] font-normal text-white">
               <Image src="/home/hero/hero-eyebrow-icon.svg" alt="" width={16} height={16} aria-hidden />

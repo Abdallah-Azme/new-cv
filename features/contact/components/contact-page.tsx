@@ -8,7 +8,7 @@ import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import { Camera, CirclePlay, MapPin, Phone, Send, Mail, SendHorizonal } from "lucide-react"
 import { getContactFaqs } from "@/features/contact/services/contact-faqs.service"
-import { SectionShell, SiteHeader } from "@/features/shared-home"
+import { SectionShell, SiteHeader, SiteFooter } from "@/features/shared-home"
 
 export async function ContactPage() {
   const t = await getTranslations("Landing.contact")
@@ -17,7 +17,6 @@ export async function ContactPage() {
 
   return (
     <main className="flex-1 bg-white">
-      <SiteHeader activeItem="contact" />
 
       <SectionShell className="relative bg-white py-[72px]">
         <div className="absolute inset-0 opacity-[0.05]">
@@ -40,27 +39,38 @@ export async function ContactPage() {
               <Image src="/contact/contact-map.png" alt={t("mapAlt")} fill className="object-cover" />
             </div>
 
-            <div className="space-y-12 p-8 md:p-16">
-              <h2 className="font-heading text-[36px] leading-[1.16] font-bold text-[#032C44]">{t("form.title")}</h2>
+            <div className="space-y-16 p-8 md:p-16">
+              <h2 className="bg-[linear-gradient(270deg,#032C44_0%,#41A0CA_100%)] bg-clip-text font-heading text-[36px] leading-[1.16] font-bold text-transparent">
+                {t("form.title")}
+              </h2>
               <form className="space-y-8">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-4">
                     <label className="text-base font-medium text-[#262626]">{t("form.nameLabel")}</label>
-                    <Input placeholder={t("form.namePlaceholder")} className="rounded-none border-0 border-b border-[#d4d4d4] px-0 focus-visible:ring-0" />
+                    <Input
+                      placeholder={t("form.namePlaceholder")}
+                      className="h-auto rounded-none border-0 border-b-[0.5px] border-[#d4d4d4] px-0 py-2 text-[14px] placeholder:text-[#d4d4d4] focus-visible:ring-0"
+                    />
                   </div>
                   <div className="space-y-4">
                     <label className="text-base font-medium text-[#262626]">{t("form.emailLabel")}</label>
-                    <Input placeholder={t("form.emailPlaceholder")} className="rounded-none border-0 border-b border-[#d4d4d4] px-0 focus-visible:ring-0" />
+                    <Input
+                      placeholder={t("form.emailPlaceholder")}
+                      className="h-auto rounded-none border-0 border-b-[0.5px] border-[#d4d4d4] px-0 py-2 text-[14px] placeholder:text-[#d4d4d4] focus-visible:ring-0"
+                    />
                   </div>
                   <div className="space-y-4">
                     <label className="text-base font-medium text-[#262626]">{t("form.phoneLabel")}</label>
-                    <Input placeholder={t("form.phonePlaceholder")} className="rounded-none border-0 border-b border-[#d4d4d4] px-0 focus-visible:ring-0" />
+                    <Input
+                      placeholder={t("form.phonePlaceholder")}
+                      className="h-auto rounded-none border-0 border-b-[0.5px] border-[#d4d4d4] px-0 py-2 text-[14px] placeholder:text-[#d4d4d4] focus-visible:ring-0"
+                    />
                   </div>
                   <div className="space-y-4">
                     <label className="text-base font-medium text-[#262626]">{t("form.subjectLabel")}</label>
                     <Input
                       placeholder={t("form.subjectPlaceholder")}
-                      className="rounded-none border-0 border-b border-[#d4d4d4] px-0 focus-visible:ring-0"
+                      className="h-auto rounded-none border-0 border-b-[0.5px] border-[#d4d4d4] px-0 py-2 text-[14px] placeholder:text-[#d4d4d4] focus-visible:ring-0"
                     />
                   </div>
                 </div>
@@ -69,7 +79,7 @@ export async function ContactPage() {
                   <label className="text-base font-medium text-[#262626]">{t("form.messageLabel")}</label>
                   <Textarea
                     placeholder={t("form.messagePlaceholder")}
-                    className="min-h-[88px] resize-none rounded-none border-0 border-b border-[#d4d4d4] px-0 focus-visible:ring-0"
+                    className="min-h-[88px] resize-none rounded-none border-0 border-b-[0.5px] border-[#d4d4d4] px-0 py-2 text-[14px] placeholder:text-[#d4d4d4] focus-visible:ring-0"
                   />
                 </div>
 
@@ -130,54 +140,6 @@ export async function ContactPage() {
           </Accordion>
         </div>
       </SectionShell>
-
-      <footer className="relative overflow-hidden bg-[#001222] py-[56px] text-white">
-        <div className="absolute inset-0 opacity-[0.35]">
-          <Image src="/contact/noise-bg.png" alt="" fill className="object-cover" />
-        </div>
-        <SectionShell className="relative bg-transparent py-0">
-          <div className="border-b border-[#003F64] pb-6">
-            <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_1fr]">
-              <div className="space-y-5">
-                <Image src="/home/hero/hero-logo.svg" alt={footerT("brand")} width={92} height={124} className="h-[124px] w-[92px]" />
-                <p className="max-w-[474px] text-base leading-normal text-[#f5f5f5]">{t("footerDescription")}</p>
-                <div className="flex items-center gap-6 text-[#f5f5f5]">
-                  <Camera className="h-5 w-5" />
-                  <SendHorizonal className="h-5 w-5" />
-                  <CirclePlay className="h-5 w-5" />
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-[20px] font-bold text-[#40A0CA]">{footerT("quickLinks.title")}</h3>
-                <div className="space-y-4 text-base text-[#f5f5f5]">
-                  <p>{footerT("quickLinks.items.about")}</p>
-                  <p>{footerT("quickLinks.items.jobs")}</p>
-                  <p>{footerT("quickLinks.items.services")}</p>
-                  <p>{footerT("quickLinks.items.contact")}</p>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-[20px] font-bold text-[#40A0CA]">{footerT("contact.title")}</h3>
-                <div className="space-y-4 text-base text-[#f5f5f5]">
-                  <p>{footerT("contact.phone")}</p>
-                  <p>{footerT("contact.email")}</p>
-                  <p>{footerT("contact.address")}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-sm text-[#f5f5f5]">
-            <p>{footerT("copyright")}</p>
-            <div className="flex items-center gap-4">
-              <span>{t("legal.terms")}</span>
-              <span className="h-4 w-px bg-[#40A0CA]" />
-              <span>{t("legal.faqs")}</span>
-              <span className="h-4 w-px bg-[#40A0CA]" />
-              <span>{t("legal.privacy")}</span>
-            </div>
-          </div>
-        </SectionShell>
-      </footer>
     </main>
   )
 }
