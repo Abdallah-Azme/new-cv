@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+
+
+# Feature-Based Architecture Rules
+You must strictly organize the code using a feature-based architecture. For every new feature or service, follow this directory structure:
+
+1. **Location**: All features reside in `src/features/[feature-name]` (or `app/features/`).
+2. **Sub-folder Structure**: Every feature folder MUST contain:
+   - `components/`: For UI-specific components related to this feature.
+   - `hooks/`: For custom React hooks (e.g., `use[Feature]Data.ts`).
+   - `services/`: For API calls, data fetching logic, or business logic.
+   - `types/`: For TypeScript interfaces/types specific to this feature.
+   - `index.ts`: The public API for the feature (export only what's needed).
+
+3. **Strict Isolation**: 
+   - Components inside one feature should not directly import from another feature's internal folders. 
+   - Use the `index.ts` (Public API) for cross-feature communication.
+   - Global/shared items belong in the root `components/`, `hooks/`, or `services/` folders.

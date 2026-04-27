@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+
+# Internationalization (i18n) Standards
+You must strictly follow these rules for ALL text, validation messages, and UI elements:
+
+1. **Multi-Language Support**: Every piece of static text, button label, and placeholder must be implemented in English (en), Arabic (ar), and German (de).
+2. **Validation Errors**: All form validation logic (Zod, Laravel, or custom) must return translated messages for all three languages.
+3. **RTL Support**: Since Arabic is included, ensure all layouts account for RTL (Right-to-Left) and LTR (Left-to-Right) switching.
+4. **Implementation**: Use the project's existing i18n framework (e.g., `next-intl`, `i18next`, or Laravel lang files).
+   - If a translation key is missing, create it in all three files: `en.json`, `ar.json`, and `de.json`.
+   - Never hardcode strings directly in the UI.
