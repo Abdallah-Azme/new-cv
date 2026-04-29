@@ -15,17 +15,28 @@ export function SiteFooter() {
     <footer className="relative w-full overflow-hidden bg-[#001222] text-white">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 opacity-10 mix-blend-soft-light"
-          style={{ 
-            backgroundImage: "url('/footer/noise-bg.png')",
-            backgroundSize: "200px 200px",
-            backgroundRepeat: "repeat"
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, #041B2D 0%, #001A2E 52%, #001525 100%)",
           }}
         />
-        {/* Figma Glows - Positioned absolutely relative to the footer container */}
-        <div className="pointer-events-none absolute top-[120px] -start-[162px] h-[468px] w-[468px] rounded-full bg-[#005685] blur-[400px]" />
-        <div className="pointer-events-none absolute -top-[128px] end-[10%] h-[468px] w-[468px] rounded-full bg-[#005685] blur-[400px]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(44% 80% at 88% 26%, rgba(64, 160, 202, 0.34) 0%, rgba(64, 160, 202, 0) 72%), radial-gradient(58% 92% at 0% 100%, rgba(0, 86, 133, 0.2) 0%, rgba(0, 86, 133, 0) 72%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: "url('/footer/noise-bg.png')",
+            backgroundSize: "420px 420px",
+            backgroundRepeat: "repeat",
+          }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1512px] px-6 py-14 lg:px-[100px] lg:pt-14 lg:pb-8">
@@ -42,10 +53,10 @@ export function SiteFooter() {
                 className="h-[124px] w-[93px] object-contain"
               />
             </Link>
-            <p className="text-[16px] leading-[1.5] font-normal text-[#F5F5F5]">
+            <p className="text-[16px] leading-normal font-normal text-[#F5F5F5]">
               {contactT("footerDescription")}
             </p>
-            <div className="flex items-center gap-6">
+            {/* <div className="flex items-center gap-6">
               <Link href="#" className="transition-transform hover:scale-110">
                 <Image src="/footer/social-instagram.svg" alt="Instagram" width={24} height={24} />
               </Link>
@@ -55,7 +66,7 @@ export function SiteFooter() {
               <Link href="#" className="transition-transform hover:scale-110">
                 <Image src="/footer/social-youtube.svg" alt="YouTube" width={24} height={24} />
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2: Quick Links */}
@@ -101,7 +112,7 @@ export function SiteFooter() {
 
         {/* Bottom Section */}
         <div className="flex flex-col items-center justify-between gap-6 pt-8 lg:flex-row">
-          <div className="flex items-center gap-2 text-[14px] font-medium leading-[1.5] text-white">
+          <div className="flex items-center gap-2 text-[14px] font-medium leading-normal text-white">
             <Image src="/footer/copyright-icon.svg" alt="" width={20} height={20} />
             <span>2026</span>
             <span className="text-[#40A0CA]">Jobs-Tsc</span>
@@ -112,11 +123,11 @@ export function SiteFooter() {
             <Link href="/terms" className="transition-colors hover:text-[#40A0CA]">
               {contactT("legal.terms")}
             </Link>
-            <div className="h-4 w-[1px] bg-[#40A0CA]" />
+            <div className="h-4 w-px bg-[#40A0CA]" />
             <Link href="/faqs" className="transition-colors hover:text-[#40A0CA]">
               {contactT("legal.faqs")}
             </Link>
-            <div className="h-4 w-[1px] bg-[#40A0CA]" />
+            <div className="h-4 w-px bg-[#40A0CA]" />
             <Link href="/privacy" className="transition-colors hover:text-[#40A0CA]">
               {contactT("legal.privacy")}
             </Link>

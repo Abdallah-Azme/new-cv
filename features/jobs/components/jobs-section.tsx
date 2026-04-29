@@ -1,76 +1,109 @@
+"use client"
+
+import { useMemo, useState } from "react"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 import { SectionShell } from "@/features/shared-home"
 import { getJobFilterKeys, getJobKeys } from "@/features/jobs/services/jobs.service"
+import { PrimaryButton } from "@/components/ui/primary-button"
+import { MoveUpRight } from "lucide-react"
 
-export async function JobsSection() {
-  const t = await getTranslations("Landing.jobs")
+const jobCategoryMap: Record<string, string> = {
+  frontend: "development",
+  marketing: "marketing",
+  uiux: "design",
+  sales: "marketing",
+  hr: "marketing",
+  accounting: "medical",
+}
+
+export function JobsSection() {
+  const t = useTranslations("Landing.jobs")
   const jobs = getJobKeys()
   const filters = getJobFilterKeys()
+  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("all")
+  const [activeJob, setActiveJob] = useState<string | null>(null)
+
+  const visibleJobs = useMemo(() => {
+    if (activeFilter === "all") return jobs
+    return jobs.filter((job) => jobCategoryMap[job] === activeFilter)
+  }, [activeFilter, jobs])
 
   return (
     <SectionShell id="jobs" className="bg-white py-[82px]">
-      <div className="space-y-4">
+      <div className="space-y-4 text-center">
         <p className="text-[12px] leading-[1.16] font-normal text-[#40A0CA]">{t("eyebrow")}</p>
-        <h2 className="max-w-[866px] text-balance text-[36px] leading-normal font-bold text-[#171717]">{t("title")}</h2>
-        <p className="max-w-[500px] text-[16px] leading-[1.16] font-normal text-[#525252]">{t("description")}</p>
+        <h2 className="mx-auto max-w-[866px] text-balance text-[48px] leading-[1.05] font-bold text-[#171717] md:text-[52px]">
+          {t("title")}
+        </h2>
+        <p className="mx-auto max-w-[500px] text-[24px] leading-[1.16] font-normal text-[#525252] md:text-[28px]">
+          {t("description")}
+        </p>
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-6 border-b border-[#002B46] pb-2">
+      <div className="mx-auto mt-8 flex w-fit flex-wrap justify-center gap-3">
         {filters.map((filter) => (
-          <Badge
+          <button
             key={filter}
-            variant="secondary"
-            className="rounded-none border-b border-transparent bg-transparent px-0 py-1 text-[16px] font-medium text-[#40A0CA] first:border-[#002B46] first:text-[#002B46]"
+            type="button"
+            onClick={() => setActiveFilter(filter)}
+            className={`rounded-[64px] border px-4 py-2 text-[18px] font-medium uppercase transition-colors ${
+              activeFilter === filter
+                ? "border-[#0082C5] bg-[linear-gradient(180deg,#006EA8_0%,#005685_100%)] text-white"
+                : "border-[#78A3BE] bg-white text-[#8A8F94] hover:border-[#0082C5] hover:bg-[linear-gradient(180deg,#006EA8_0%,#005685_100%)] hover:text-white"
+            }`}
           >
             {t(`filters.${filter}`)}
-          </Badge>
+          </button>
         ))}
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {jobs.map((job, index) => (
+      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {visibleJobs.map((job) => (
           <Card
             key={job}
-            className={
-              index === 1
-                ? "rounded-[8px] border border-[#00A3F7] bg-[linear-gradient(180deg,#006EA8_0%,#005685_100%)] text-white shadow-[0_0_0_5px_rgba(255,255,255,1),0_0_0_4px_rgba(232,242,255,1),0_4px_5px_rgba(0,86,133,0.15),0_10px_13px_rgba(0,86,133,0.22),0_24px_32px_rgba(0,86,133,0.19)]"
-                : "rounded-[8px] border border-[#dadada] bg-white"
-            }
+            onMouseEnter={() => setActiveJob(job)}
+            onMouseLeave={() => setActiveJob((current) => (current === job ? null : current))}
+            onClick={() => setActiveJob(job)}
+            className={`group cursor-pointer rounded-[8px] border border-[#78A3BE] transition-colors ${
+              activeJob === job
+                ? "bg-[url('/contact/button-noise.png'),linear-gradient(180deg,#006EA8_0%,#005685_100%)] bg-size-[180px_180px,auto] bg-blend-[plus-lighter,normal] text-white shadow-[0_0_0_2px_rgba(120,163,190,0.1),0_18px_38px_rgba(0,86,133,0.25)]"
+                : "bg-white hover:bg-[url('/contact/button-noise.png'),linear-gradient(180deg,#006EA8_0%,#005685_100%)] hover:bg-size-[180px_180px,auto] hover:bg-blend-[plus-lighter,normal] hover:text-white hover:shadow-[0_0_0_2px_rgba(120,163,190,0.1),0_18px_38px_rgba(0,86,133,0.25)]"
+            }`}
           >
-            <CardContent className="space-y-4 p-6">
+            <CardContent className="space-y-4 p-5">
               <Badge
-                className={
-                  index === 1
-                    ? "w-fit rounded-[64px] bg-white/20 px-3 py-2 text-[12px] text-white"
-                    : "w-fit rounded-[64px] bg-[#f5f5f5] px-3 py-2 text-[12px] text-[#525252]"
-                }
+                className="w-fit rounded-[64px] bg-[linear-gradient(180deg,#006EA8_0%,#005685_100%)] px-3 py-1 text-[12px] text-white group-hover:bg-white/20"
               >
                 {t(`items.${job}.department`)}
               </Badge>
-              <h3 className={`text-[20px] leading-[1.16] font-bold ${index === 1 ? "text-white" : "text-[#262626]"}`}>
+              <h3 className="text-[20px] leading-[1.16] font-bold text-[#262626] group-hover:text-white">
                 {t(`items.${job}.title`)}
               </h3>
               <div className="flex items-center justify-between">
-                <p className={`text-[16px] leading-[1.16] font-medium ${index === 1 ? "text-white" : "text-[#002B46]"}`}>$1200 /month</p>
-                <p className={`text-[16px] leading-[1.16] font-medium ${index === 1 ? "text-white" : "text-[#002B46]"}`}>{t(`items.${job}.type`)}</p>
+                <p className="text-[16px] leading-[1.16] font-medium text-[#002B46] group-hover:text-white">$1200 /month</p>
+                <p className="text-[16px] leading-[1.16] font-medium text-[#002B46] group-hover:text-white">{t(`items.${job}.type`)}</p>
               </div>
-              <p className={`text-[16px] leading-[1.16] font-normal ${index === 1 ? "text-[#e8f2ff]" : "text-[#525252]"}`}>{t(`items.${job}.company`)}</p>
-              <Button
-                variant="outline"
-                className={`h-[44px] w-full rounded-[12px] ${index === 1 ? "border-white bg-white/10 text-white" : "border-[#dadada]"}`}
-              >
+              <div className="flex items-center gap-2">
+                <div className="grid size-8 place-items-center rounded-full border border-[#78A3BE] group-hover:border-white/60">
+                  <span className="size-4 rounded-full border border-[#78A3BE] group-hover:border-white/70" />
+                </div>
+                <p className="text-[16px] leading-[1.16] font-normal text-[#525252] group-hover:text-[#e8f2ff]">
+                  {t(`items.${job}.company`)}
+                </p>
+              </div>
+              <PrimaryButton className="h-[44px] rounded-[10px] text-[24px] font-medium">
                 {t("moreDetails")}
-              </Button>
+                <MoveUpRight className="size-5" />
+              </PrimaryButton>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="mt-8">
-        <Button className="h-11 rounded-xl bg-[#001222] px-5 text-base font-medium hover:bg-[#002b46]">{t("showAll")}</Button>
+      <div className="mt-8 flex justify-center">
+        <PrimaryButton className="h-11 w-auto rounded-[10px] px-8 text-[24px] font-medium">{t("showAll")}</PrimaryButton>
       </div>
     </SectionShell>
   )

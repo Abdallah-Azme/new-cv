@@ -264,6 +264,24 @@
           "name": "Albert Flores",
           "role": "Web Designer, 25, Ägypten",
           "quote": "Ich habe eine Stelle gefunden, die perfekt zu meinen Fähigkeiten passt."
+        },
+        "lina": {
+          "initials": "LH",
+          "name": "Lina Hassan",
+          "role": "Pflegekraft, 27, Jordanien",
+          "quote": "Von den Unterlagen bis zum Onboarding war jeder Schritt klar und unterstützend."
+        },
+        "youssef": {
+          "initials": "YE",
+          "name": "Youssef El Amrani",
+          "role": "Elektriker, 31, Marokko",
+          "quote": "Ich bekam praxisnahe Unterstützung und fand eine Stelle, die zu meiner Erfahrung passt."
+        },
+        "nora": {
+          "initials": "NA",
+          "name": "Nora Ali",
+          "role": "HR-Spezialistin, 30, Ägypten",
+          "quote": "Der gesamte Umzugsprozess war reibungslos und die Kommunikation stets professionell."
         }
       }
     },

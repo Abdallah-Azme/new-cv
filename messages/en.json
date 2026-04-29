@@ -264,6 +264,24 @@
           "name": "Albert Flores",
           "role": "Web Designer, 25, Egypt",
           "quote": "I found a role that matches my skills and moved with confidence."
+        },
+        "lina": {
+          "initials": "LH",
+          "name": "Lina Hassan",
+          "role": "Nurse, 27, Jordan",
+          "quote": "From paperwork to onboarding, every step was clear and supportive."
+        },
+        "youssef": {
+          "initials": "YE",
+          "name": "Youssef El Amrani",
+          "role": "Electrician, 31, Morocco",
+          "quote": "I received practical guidance and secured a role that fits my experience."
+        },
+        "nora": {
+          "initials": "NA",
+          "name": "Nora Ali",
+          "role": "HR Specialist, 30, Egypt",
+          "quote": "The transition process was smooth and the communication was always professional."
         }
       }
     },
