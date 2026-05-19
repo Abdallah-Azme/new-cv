@@ -19,7 +19,13 @@ export default async function SignInPage() {
       footerPrefix={t("noAccount")}
       footerActionLabel={t("signUp")}
       footerActionHref="/sign-up"
-      topSlot={<AuthUserCompanyTabs activeLabel={t("userTab")} inactiveLabel={t("companyTab")} />}
+      topSlot={
+        <AuthUserCompanyTabs
+          userLabel={t("userTab")}
+          companyLabel={t("companyTab")}
+          tabListLabel={t("accountTypeTabs")}
+        />
+      }
       asideSlot={<AuthSideLink href="/forgot-password" label={t("forgotPassword")} />}
     >
       <AuthFieldGroup>

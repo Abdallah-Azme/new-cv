@@ -37,20 +37,20 @@ export async function NewsSection() {
         <div className="space-y-5">
           {news.slice(1).map((item, idx) => (
             <Link key={item} href={`/news/${item}`} className="block">
-              <article className="flex gap-4">
+              <article className="flex h-[223px] items-start gap-8 self-stretch">
                 <Image
                   src={`/home/content/news-${idx + 1}.png`}
                   alt=""
                   width={223}
                   height={223}
-                  className="h-[140px] w-[140px] rounded-[14px] object-cover"
+                  className="h-[223px] w-[223px] rounded-[14px] object-cover"
                 />
-                <div className="flex flex-1 flex-col justify-between gap-2 py-1">
+                <div className="flex flex-1 flex-col justify-between">
                   <div className="space-y-2">
-                    <h3 className="text-[52px] leading-[1.05] font-medium text-[#171717]">{t(`items.${item}.title`)}</h3>
-                    <p className="text-[20px] leading-tight text-[#525252]">{t(`items.${item}.description`)}</p>
+                    <h3 className="text-[48px] leading-[1.05] font-medium text-[#171717]">{t(`items.${item}.title`)}</h3>
+                    <p className="text-[16px] leading-tight text-[#525252]">{t(`items.${item}.description`)}</p>
                   </div>
-                  <p className="inline-flex items-center gap-2 text-[20px] leading-[1.16] text-[#525252]">
+                  <p className="inline-flex items-center gap-2 text-[16px] leading-[1.16] text-[#525252]">
                     <CalendarDays className="h-4 w-4 text-[#40A0CA]" />
                     {t(`items.${item}.date`)}
                   </p>

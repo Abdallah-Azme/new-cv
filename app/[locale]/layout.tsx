@@ -5,7 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 import { DirectionProvider } from "@/components/ui/direction";
 import { routing } from "@/i18n/routing";
-import { SiteHeader, SiteFooter } from "@/features/shared-home";
+import { SiteChrome } from "@/features/shared-home";
 import "../globals.css";
 
 const cairo = Cairo({
@@ -70,12 +70,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader />
           <DirectionProvider dir={direction} direction={direction}>
-            <main className="flex-1">
-              {children}
-            </main>
-            <SiteFooter />
+            <SiteChrome>{children}</SiteChrome>
           </DirectionProvider>
         </NextIntlClientProvider>
       </body>

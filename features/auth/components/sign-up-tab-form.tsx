@@ -9,6 +9,7 @@ import { AuthPrimaryCta } from "./auth-primary-cta"
 type Props = {
   userTabLabel: string
   companyTabLabel: string
+  tabListLabel: string
   fullNamePlaceholder: string
   emailPlaceholder: string
   passwordPlaceholder: string
@@ -20,6 +21,7 @@ type Props = {
 export function SignUpTabForm({
   userTabLabel,
   companyTabLabel,
+  tabListLabel,
   fullNamePlaceholder,
   emailPlaceholder,
   passwordPlaceholder,
@@ -29,19 +31,22 @@ export function SignUpTabForm({
 }: Props) {
   const [activeTab, setActiveTab] = useState<"user" | "company">("user")
   const [showPassword, setShowPassword] = useState(false)
+  const baseTabClassName =
+    "inline-flex h-[52px] w-[227px] items-center justify-center gap-2 rounded-xl border px-4 py-2 text-base font-medium transition-all duration-200"
+  const activeTabClassName =
+    "border-[#9fc9e6] bg-linear-to-b from-[#006ea8] to-[#005685] text-white shadow-[0_42px_107px_rgba(123,190,255,0.34),0_24.7206px_32.2574px_rgba(0,86,133,0.1867),0_10.2677px_13.3981px_rgba(0,86,133,0.22),0_3.71362px_4.84582px_rgba(0,86,133,0.1533),inset_0_1px_18px_2px_#E8F2FF,inset_0_1px_4px_2px_#C2DDFF]"
+  const inactiveTabClassName =
+    "border-[#6b87a2] bg-[#02223b]/65 text-[#d9eef9] hover:bg-[#033a62]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fc9e6]/60"
 
   return (
     <>
-      <div className="flex h-11 w-full items-center gap-4">
+      <div role="tablist" aria-label={tabListLabel} className="flex w-full items-center gap-4">
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "user"}
           onClick={() => setActiveTab("user")}
-          className={
-            activeTab === "user"
-              ? "inline-flex h-11 w-[227px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-[#006ea8] px-4 py-2 text-base text-white shadow-[0_0_0_5px_#fff,0_0_0_9px_#E8F2FF,0_3.71px_4.85px_rgba(0,86,133,0.15),0_10.27px_13.40px_rgba(0,86,133,0.22),0_24.72px_32.25px_rgba(0,86,133,0.19),0_42px_107px_rgba(123,190,255,0.34),inset_0_1px_4px_2px_#C2DDFF,inset_0_1px_18px_2px_#E8F2FF]"
-              : "inline-flex h-10 w-[227px] items-center justify-center gap-2 rounded-xl border border-[#a3a3a3] px-4 py-2 text-base text-[#a3a3a3]"
-          }
-          aria-pressed={activeTab === "user"}
+          className={`${baseTabClassName} ${activeTab === "user" ? activeTabClassName : inactiveTabClassName}`}
         >
           <Image src="/auth/user.svg" alt="" width={24} height={24} className="h-6 w-6" aria-hidden />
           <span>{userTabLabel}</span>
@@ -49,13 +54,10 @@ export function SignUpTabForm({
 
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "company"}
           onClick={() => setActiveTab("company")}
-          className={
-            activeTab === "company"
-              ? "inline-flex h-11 w-[227px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-[#006ea8] px-4 py-2 text-base text-white shadow-[0_0_0_5px_#fff,0_0_0_9px_#E8F2FF,0_3.71px_4.85px_rgba(0,86,133,0.15),0_10.27px_13.40px_rgba(0,86,133,0.22),0_24.72px_32.25px_rgba(0,86,133,0.19),0_42px_107px_rgba(123,190,255,0.34),inset_0_1px_4px_2px_#C2DDFF,inset_0_1px_18px_2px_#E8F2FF]"
-              : "inline-flex h-10 w-[227px] items-center justify-center gap-2 rounded-xl border border-[#a3a3a3] px-4 py-2 text-base text-[#a3a3a3]"
-          }
-          aria-pressed={activeTab === "company"}
+          className={`${baseTabClassName} ${activeTab === "company" ? activeTabClassName : inactiveTabClassName}`}
         >
           <Image src="/auth/company.svg" alt="" width={24} height={24} className="h-6 w-6" aria-hidden />
           <span>{companyTabLabel}</span>

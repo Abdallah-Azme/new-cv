@@ -24,6 +24,7 @@
       "back": "Zurück",
       "userTab": "Nutzer",
       "companyTab": "Unternehmen",
+      "accountTypeTabs": "Kontotyp",
       "noAccount": "Noch kein Konto?",
       "signUp": "Registrieren",
       "alternateAction": "Noch kein Konto? Jetzt erstellen",
@@ -42,6 +43,7 @@
       "back": "Zurück",
       "userTab": "Nutzer",
       "companyTab": "Unternehmen",
+      "accountTypeTabs": "Kontotyp",
       "hasAccount": "Hast du bereits ein Konto?",
       "signIn": "Anmelden",
       "alternateAction": "Du hast bereits ein Konto? Anmelden",
@@ -383,6 +385,7 @@
     },
     "about": {
       "intro": {
+        "eyebrow": "Unsere Identitaet",
         "title": "Die Bruecke zwischen Talenten und Deutschland",
         "descriptionOne": "Willkommen bei Talent Seeker, deiner vertrauten Plattform, um talentierte Fachkraefte mit starken Chancen auf dem deutschen Arbeitsmarkt zu verbinden.",
         "descriptionTwo": "Wir unterstuetzen Talente und Unternehmen in jedem Schritt - von der Rollenvermittlung ueber Relocation bis zur nachhaltigen Integration."
@@ -390,6 +393,11 @@
       "story": {
         "eyebrow": "Unsere Mission",
         "title": "Die Bruecke zwischen Talenten und Exzellenz",
+        "tabs": {
+          "mission": "Unsere Mission",
+          "vision": "Unsere Vision",
+          "development": "Entwicklung"
+        },
         "descriptionOne": "Wir handeln als Partner, der internationale Kandidaten mit den Anforderungen moderner deutscher Unternehmen zusammenbringt.",
         "descriptionTwo": "Durch persoenliche Begleitung und intelligente Matching-Prozesse helfen wir Kandidaten und Unternehmen, langfristig die richtige Verbindung zu finden."
       }

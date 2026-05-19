@@ -33,9 +33,9 @@ export function AuthCardWrapper({
     <section className="relative flex min-h-screen w-full items-center justify-center px-4 py-10 text-white sm:px-6">
       <Link
         href={backHref}
-        className="absolute inset-s-[100px] top-12 inline-flex h-10 items-center justify-center gap-2 rounded-xl px-8 py-2 text-base text-[#40a0ca]"
+        className="absolute inset-s-12 top-8 inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#041d33]/60 px-6 py-3 text-lg font-medium text-[#8aa7be] transition-colors hover:border-white/20 hover:text-[#b5cadd]"
       >
-        <Image src="/auth/back.svg" alt="" width={24} height={24} aria-hidden />
+        <Image src="/auth/arrows.png" alt="" width={16} height={16} aria-hidden />
         <span>{backLabel}</span>
       </Link>
 

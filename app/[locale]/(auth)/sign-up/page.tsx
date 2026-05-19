@@ -21,6 +21,7 @@ export default async function SignUpPage() {
       <SignUpTabForm
         userTabLabel={t("userTab")}
         companyTabLabel={t("companyTab")}
+        tabListLabel={t("accountTypeTabs")}
         fullNamePlaceholder={t("fields.fullNamePlaceholder")}
         emailPlaceholder={t("fields.emailPlaceholder")}
         passwordPlaceholder={t("fields.passwordPlaceholder")}

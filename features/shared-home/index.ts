@@ -1,5 +1,6 @@
 export * from "./components/section-shell"
 export * from "./components/site-header"
+export * from "./components/site-chrome"
 export * from "./hooks/use-home-direction"
 export * from "./services/home-theme.service"
 export * from "./components/site-footer"

@@ -24,6 +24,7 @@
       "back": "Back",
       "userTab": "User",
       "companyTab": "Company",
+      "accountTypeTabs": "Account type",
       "noAccount": "Don't have account?",
       "signUp": "Sign Up",
       "alternateAction": "Don't have an account? Create one",
@@ -42,6 +43,7 @@
       "back": "Back",
       "userTab": "User",
       "companyTab": "Company",
+      "accountTypeTabs": "Account type",
       "hasAccount": "Already have account?",
       "signIn": "Sign In",
       "alternateAction": "Already have an account? Sign in",
@@ -383,6 +385,7 @@
     },
     "about": {
       "intro": {
+        "eyebrow": "Our Identity",
         "title": "The Bridge Between Talent and Germany",
         "descriptionOne": "Welcome to Talent Seeker, your trusted platform for connecting talented professionals with opportunities in the German job market.",
         "descriptionTwo": "We support both candidates and employers from first match to long-term success through relocation support and guided onboarding."
@@ -390,6 +393,11 @@
       "story": {
         "eyebrow": "Our Mission",
         "title": "The Bridge Between Talent And Excellence",
+        "tabs": {
+          "mission": "Our Mission",
+          "vision": "Our Vision",
+          "development": "Development"
+        },
         "descriptionOne": "We combine human support with practical hiring workflows to create strong matches between global professionals and German companies.",
         "descriptionTwo": "By aligning goals, skills, and market needs, we help both sides move forward with confidence and build lasting outcomes."
       }
