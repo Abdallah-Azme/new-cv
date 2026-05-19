@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { getTranslations } from "next-intl/server"
 import { PrimaryButton } from "@/components/ui/primary-button"
-import { SectionShell } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 
 export async function HeroSection() {
   const t = await getTranslations("Landing.hero")
@@ -39,15 +39,17 @@ export async function HeroSection() {
   return (
     <SectionShell
       id="home"
+      stagger={false}
       className="relative h-[982px] overflow-hidden bg-[#001222]"
     >
       {/* Background Bars */}
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-40"
         style={{
-          background: "repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(64, 160, 202, 0.15) 50px, rgba(64, 160, 202, 0.15) 100px)",
+          background:
+            "repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(64, 160, 202, 0.15) 50px, rgba(64, 160, 202, 0.15) 100px)",
           maskImage: "linear-gradient(to top, black 0%, transparent 80%)",
-          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 80%)"
+          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 80%)",
         }}
       />
 
@@ -71,29 +73,35 @@ export async function HeroSection() {
         aria-hidden
       />
 
-      <div className="relative z-10">
-        <div className="mt-[48px] flex flex-col items-center gap-[48px] pb-[30px]">
-          <div className="flex flex-col items-center gap-4">
-            <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.15)] px-4 py-2 text-[12px] leading-[1.16] font-normal text-white border border-white/10">
-              <Image src="/home/hero/hero-eyebrow-icon.svg" alt="" width={16} height={16} aria-hidden />
-              {t("eyebrow")}
-            </p>
+      <StaggerInView
+        leadDelay={0.55}
+        className="relative z-10 mt-[48px] flex flex-col items-center gap-[48px] pb-[30px]"
+      >
+        <StaggerItem>
+          <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.15)] px-4 py-2 text-[12px] leading-[1.16] font-normal text-white border border-white/10">
+            <Image src="/home/hero/hero-eyebrow-icon.svg" alt="" width={16} height={16} aria-hidden />
+            {t("eyebrow")}
+          </p>
+        </StaggerItem>
 
-            <div className="flex w-full max-w-[950px] flex-col items-center gap-8 mt-4">
-              <h1 className="font-heading max-w-[866px] text-center text-balance text-[72px] leading-[1.1] font-bold text-white">
-                {renderTitle()}
-              </h1>
-              <p className="max-w-[680px] text-center text-pretty text-[18px] leading-[1.6] font-normal text-white/80">
-                {t("description")}
-              </p>
-            </div>
+        <StaggerItem>
+          <h1 className="font-heading mx-auto mt-4 max-w-[866px] text-center text-balance text-[72px] leading-[1.1] font-bold text-white">
+            {renderTitle()}
+          </h1>
+        </StaggerItem>
 
-            <PrimaryButton className="h-[52px] w-[220px] mt-4">
-              {t("cta")}
-            </PrimaryButton>
-          </div>
-        </div>
-      </div>
+        <StaggerItem>
+          <p className="mx-auto mt-8 max-w-[680px] text-center text-pretty text-[18px] leading-[1.6] font-normal text-white/80">
+            {t("description")}
+          </p>
+        </StaggerItem>
+
+        <StaggerItem>
+          <PrimaryButton className="mt-4 h-[52px] w-[220px]">
+            {t("cta")}
+          </PrimaryButton>
+        </StaggerItem>
+      </StaggerInView>
     </SectionShell>
   )
 }

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 
 import { FilterPanel } from "./filter-panel"
+import { StaggerInView, StaggerItem } from "@/features/shared-home"
 
 type JobsPageContentProps = {
   jobs: readonly string[]
@@ -64,7 +65,8 @@ export function JobsPageContent({
   const jobCards = useMemo(() => jobs.slice(0, 4), [jobs])
 
   return (
-    <div className="mt-[52px] space-y-5">
+    <StaggerInView className="mt-[52px] space-y-5">
+      <StaggerItem>
       <div className="flex items-center justify-between">
         <h2 className="text-[36px] leading-[1.16] font-semibold text-[#171717]">
           {allJobsLabel} <span className="text-[#525252]">({allJobsCountLabel})</span>
@@ -77,11 +79,14 @@ export function JobsPageContent({
           {filterLabel}
         </Button>
       </div>
+      </StaggerItem>
 
+      <StaggerItem>
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_416px]">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <StaggerInView className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {jobCards.map((job) => (
-            <article key={job} className="rounded-[16px] border border-[#78a3be] bg-white p-6">
+            <StaggerItem key={job}>
+            <article className="rounded-[16px] border border-[#78a3be] bg-white p-6">
               <span className="inline-flex rounded-[64px] bg-[linear-gradient(180deg,#006EA8_0%,#005685_100%)] px-3 py-[6px] text-[11px] text-white">
                 {departmentLabel}
               </span>
@@ -104,8 +109,9 @@ export function JobsPageContent({
                 <MoveUpRight className="h-5 w-5" />
               </Button>
             </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerInView>
 
         <aside className="hidden lg:block">
           <FilterPanel
@@ -138,6 +144,7 @@ export function JobsPageContent({
           />
         </aside>
       </div>
+      </StaggerItem>
 
       <Sheet open={isMobileFilterOpen} onOpenChange={setIsMobileFilterOpen}>
         <SheetContent side="right" className="w-[92vw] max-w-[420px] overflow-y-auto border-l border-[#78a3be] p-0 sm:w-[420px]">
@@ -173,7 +180,7 @@ export function JobsPageContent({
           </div>
         </SheetContent>
       </Sheet>
-    </div>
+    </StaggerInView>
   )
 }
 

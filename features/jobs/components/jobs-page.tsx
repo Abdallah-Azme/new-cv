@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
-import { SectionShell, SiteHeader } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 import { getJobKeys } from "@/features/jobs/services/jobs.service"
 import { JobsPageContent } from "@/features/jobs/components/jobs-page-content"
 
@@ -18,8 +18,10 @@ export async function JobsPage() {
   return (
     <main className="flex-1 bg-white">
 
-      <SectionShell className="relative py-[62px]">
-        <div className="mx-auto flex max-w-[866px] flex-col items-center gap-7 text-center">
+      <SectionShell stagger={false} className="relative py-[62px]">
+        <StaggerInView className="mx-auto flex max-w-[866px] flex-col items-center gap-7 text-center">
+          <StaggerItem>
+          <div className="flex w-full flex-col items-center gap-7 text-center">
           <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.25)] px-4 py-2 text-[12px] leading-[1.16] text-[#40A0CA]">
             <BriefcaseBusiness className="h-4 w-4" />
             {jobsT("eyebrow")}
@@ -35,7 +37,9 @@ export async function JobsPage() {
               {t("search")}
             </Button>
           </form>
-        </div>
+          </div>
+          </StaggerItem>
+        </StaggerInView>
 
         <JobsPageContent
           jobs={jobs}

@@ -5,7 +5,7 @@ import Autoplay from "embla-carousel-autoplay"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { useLocale, useTranslations } from "next-intl"
-import { SectionShell } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -24,20 +24,26 @@ export function TestimonialsSection() {
   const isRtl = locale === "ar"
 
   return (
-    <SectionShell className="overflow-hidden bg-[#f8fcff] py-[82px]">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+    <SectionShell stagger={false} className="overflow-hidden bg-[#f8fcff] py-[82px]">
+      <StaggerInView className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-[600px] space-y-4">
-          <p className="inline-flex rounded-full bg-[#e7f3fb] px-3 py-2 text-[12px] leading-none font-medium text-[#40A0CA]">{t("eyebrow")}</p>
-          <h2 className="text-balance text-[36px] leading-normal font-bold text-[#171717]">{t("title")}</h2>
-          <p className="max-w-[560px] text-[16px] leading-[1.35] font-normal text-[#525252]">{t("description")}</p>
+          <StaggerItem>
+            <p className="inline-flex rounded-full bg-[#e7f3fb] px-3 py-2 text-[12px] leading-none font-medium text-[#40A0CA]">{t("eyebrow")}</p>
+          </StaggerItem>
+          <StaggerItem>
+            <h2 className="text-balance text-[36px] leading-normal font-bold text-[#171717]">{t("title")}</h2>
+          </StaggerItem>
+          <StaggerItem>
+            <p className="max-w-[560px] text-[16px] leading-[1.35] font-normal text-[#525252]">{t("description")}</p>
+          </StaggerItem>
         </div>
-        <div className="hidden items-center gap-5 lg:flex">
+        <StaggerItem className="hidden items-center gap-5 lg:flex">
           <span className="h-px w-16 bg-[#b7d8e8]" />
           <span className="h-px w-16 bg-[#1f4960]" />
-        </div>
-      </div>
+        </StaggerItem>
+      </StaggerInView>
 
-      <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 px-6 lg:px-[72px]">
+      <StaggerInView className="relative left-1/2 mt-8 w-screen -translate-x-1/2 px-6 lg:px-[72px]">
         <Carousel
           opts={{ loop: true, align: "start", direction: isRtl ? "rtl" : "ltr" }}
           plugins={[autoplay]}
@@ -47,6 +53,7 @@ export function TestimonialsSection() {
           <CarouselContent className="ml-0">
             {items.map((item, index) => (
               <CarouselItem key={`${item.key}-${index}`} className="pl-0 pr-6 md:basis-1/2 xl:basis-1/4 xl:pr-8">
+                <StaggerItem>
                 <motion.article initial="rest" whileHover="hover" className="space-y-6">
                   <div className="relative">
                     <Image
@@ -92,11 +99,12 @@ export function TestimonialsSection() {
                     <p className="text-[44px] leading-[1.05] font-bold text-[#171717]">{t(`items.${item.key}.name`)}</p>
                   </div>
                 </motion.article>
+                </StaggerItem>
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
-      </div>
+      </StaggerInView>
     </SectionShell>
   )
 }

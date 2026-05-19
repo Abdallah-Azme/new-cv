@@ -1,4 +1,7 @@
 export * from "./components/section-shell"
+export * from "./components/stagger-in-view"
+export * from "./types/stagger-variants"
+export { StaggerAuto } from "@/components/motion"
 export * from "./components/site-header"
 export * from "./components/site-chrome"
 export * from "./hooks/use-home-direction"

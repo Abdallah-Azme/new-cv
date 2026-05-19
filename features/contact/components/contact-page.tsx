@@ -4,7 +4,7 @@ import { PrimaryButton } from "@/components/ui/primary-button"
 import { Textarea } from "@/components/ui/textarea"
 import { ContactInfoCard } from "./contact-info-card"
 import { getContactFaqs } from "@/features/contact/services/contact-faqs.service"
-import { SectionShell } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 import { Mail, MapPin, Phone, Send, SendHorizonal } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 import Image from "next/image"
@@ -18,11 +18,12 @@ export async function ContactPage() {
   return (
     <main className="flex-1 bg-white">
 
-      <SectionShell className="relative bg-white py-[72px]">
+      <SectionShell stagger={false} className="relative bg-white py-[72px]">
         <div className="absolute inset-0 opacity-[0.05]">
           <Image src="/contact/noise-bg.png" alt="" fill className="object-cover" />
         </div>
-        <div className="relative space-y-8">
+        <StaggerInView className="relative space-y-8">
+          <StaggerItem>
           <div className="space-y-6">
             <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.25)] px-4 py-2 text-[12px] leading-[1.16] text-[#40A0CA]">
               <SendHorizonal className="h-4 w-4" />
@@ -33,7 +34,9 @@ export async function ContactPage() {
               <p className="text-[16px] leading-normal text-[#525252]">{t("description")}</p>
             </div>
           </div>
+          </StaggerItem>
 
+          <StaggerItem>
           <div className="grid overflow-hidden rounded-[16px] border border-[#d4d4d4] bg-white lg:grid-cols-2">
             <div className="relative min-h-[520px]">
               <Image src="/contact/contact-map.png" alt={t("mapAlt")} fill className="object-cover" />
@@ -90,7 +93,8 @@ export async function ContactPage() {
               </form>
             </div>
           </div>
-        </div>
+          </StaggerItem>
+        </StaggerInView>
       </SectionShell>
 
       <section className="relative py-[46px]">
@@ -98,20 +102,27 @@ export async function ContactPage() {
         <div className="absolute inset-0 opacity-[0.05]">
           <Image src="/contact/noise-bg.png" alt="" fill className="object-cover" />
         </div>
-        <SectionShell className="relative bg-transparent py-0">
-          <div className="grid gap-4 md:grid-cols-3">
-            <ContactInfoCard icon={<Phone className="h-12 w-12 text-[#40A0CA]" />} label={t("info.phoneLabel")} value={footerT("contact.phone")} />
-            <ContactInfoCard icon={<Mail className="h-12 w-12 text-[#40A0CA]" />} label={t("info.emailLabel")} value={footerT("contact.email")} />
-            <ContactInfoCard icon={<MapPin className="h-12 w-12 text-[#40A0CA]" />} label={t("info.addressLabel")} value={footerT("contact.address")} />
-          </div>
+        <SectionShell stagger={false} className="relative bg-transparent py-0">
+          <StaggerInView className="grid gap-4 md:grid-cols-3">
+            <StaggerItem>
+              <ContactInfoCard icon={<Phone className="h-12 w-12 text-[#40A0CA]" />} label={t("info.phoneLabel")} value={footerT("contact.phone")} />
+            </StaggerItem>
+            <StaggerItem>
+              <ContactInfoCard icon={<Mail className="h-12 w-12 text-[#40A0CA]" />} label={t("info.emailLabel")} value={footerT("contact.email")} />
+            </StaggerItem>
+            <StaggerItem>
+              <ContactInfoCard icon={<MapPin className="h-12 w-12 text-[#40A0CA]" />} label={t("info.addressLabel")} value={footerT("contact.address")} />
+            </StaggerItem>
+          </StaggerInView>
         </SectionShell>
       </section>
 
-      <SectionShell className="relative bg-white py-[112px]">
+      <SectionShell stagger={false} className="relative bg-white py-[112px]">
         <div className="absolute inset-0 opacity-[0.05]">
           <Image src="/contact/noise-bg.png" alt="" fill className="object-cover" />
         </div>
-        <div className="relative mx-auto max-w-[866px] space-y-16">
+        <StaggerInView className="relative mx-auto max-w-[866px] space-y-16">
+          <StaggerItem>
           <div className="space-y-6 text-center">
             <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.25)] px-4 py-2 text-[12px] leading-[1.16] text-[#40A0CA]">
               <SendHorizonal className="h-4 w-4" />
@@ -120,7 +131,9 @@ export async function ContactPage() {
             <h2 className="font-heading text-[48px] leading-[1.16] font-bold text-[#171717]">{t("faq.title")}</h2>
             <p className="text-[16px] leading-normal text-[#525252]">{t("faq.description")}</p>
           </div>
+          </StaggerItem>
 
+          <StaggerItem>
           <Accordion type="single" defaultValue={faqs[1]?.id} collapsible className="w-full">
             {faqs.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id} className="border-b border-[#d4d4d4]">
@@ -138,7 +151,8 @@ export async function ContactPage() {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+          </StaggerItem>
+        </StaggerInView>
       </SectionShell>
     </main>
   )

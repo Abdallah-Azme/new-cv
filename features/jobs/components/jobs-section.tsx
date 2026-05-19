@@ -4,7 +4,7 @@ import { useMemo, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
-import { SectionShell } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 import { getJobFilterKeys, getJobKeys } from "@/features/jobs/services/jobs.service"
 import { PrimaryButton } from "@/components/ui/primary-button"
 import { MoveUpRight } from "lucide-react"
@@ -31,21 +31,27 @@ export function JobsSection() {
   }, [activeFilter, jobs])
 
   return (
-    <SectionShell id="jobs" className="bg-white py-[82px]">
-      <div className="space-y-4 text-center">
-        <p className="text-[12px] leading-[1.16] font-normal text-[#40A0CA]">{t("eyebrow")}</p>
-        <h2 className="mx-auto max-w-[866px] text-balance text-[48px] leading-[1.05] font-bold text-[#171717] md:text-[52px]">
-          {t("title")}
-        </h2>
-        <p className="mx-auto max-w-[500px] text-[24px] leading-[1.16] font-normal text-[#525252] md:text-[28px]">
-          {t("description")}
-        </p>
-      </div>
+    <SectionShell id="jobs" stagger={false} className="bg-white py-[82px]">
+      <StaggerInView className="space-y-4 text-center">
+        <StaggerItem>
+          <p className="text-[12px] leading-[1.16] font-normal text-[#40A0CA]">{t("eyebrow")}</p>
+        </StaggerItem>
+        <StaggerItem>
+          <h2 className="mx-auto max-w-[866px] text-balance text-[48px] leading-[1.05] font-bold text-[#171717] md:text-[52px]">
+            {t("title")}
+          </h2>
+        </StaggerItem>
+        <StaggerItem>
+          <p className="mx-auto max-w-[500px] text-[24px] leading-[1.16] font-normal text-[#525252] md:text-[28px]">
+            {t("description")}
+          </p>
+        </StaggerItem>
+      </StaggerInView>
 
-      <div className="mx-auto mt-8 flex w-fit flex-wrap justify-center gap-3">
+      <StaggerInView className="mx-auto mt-8 flex w-fit flex-wrap justify-center gap-3">
         {filters.map((filter) => (
+          <StaggerItem key={filter}>
           <button
-            key={filter}
             type="button"
             onClick={() => setActiveFilter(filter)}
             className={`rounded-[64px] border px-4 py-2 text-[18px] font-medium uppercase transition-colors ${
@@ -56,13 +62,14 @@ export function JobsSection() {
           >
             {t(`filters.${filter}`)}
           </button>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerInView>
 
-      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <StaggerInView className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleJobs.map((job) => (
+          <StaggerItem key={job}>
           <Card
-            key={job}
             onMouseEnter={() => setActiveJob(job)}
             onMouseLeave={() => setActiveJob((current) => (current === job ? null : current))}
             onClick={() => setActiveJob(job)}
@@ -99,12 +106,15 @@ export function JobsSection() {
               </PrimaryButton>
             </CardContent>
           </Card>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerInView>
 
-      <div className="mt-8 flex justify-center">
-        <PrimaryButton className="h-11 w-auto rounded-[10px] px-8 text-[24px] font-medium">{t("showAll")}</PrimaryButton>
-      </div>
+      <StaggerInView className="mt-8 flex justify-center">
+        <StaggerItem>
+          <PrimaryButton className="h-11 w-auto rounded-[10px] px-8 text-[24px] font-medium">{t("showAll")}</PrimaryButton>
+        </StaggerItem>
+      </StaggerInView>
     </SectionShell>
   )
 }

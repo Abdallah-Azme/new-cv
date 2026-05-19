@@ -1,6 +1,9 @@
+"use client"
+
 import type { ReactNode } from "react"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
+import { StaggerInView, StaggerItem } from "@/features/shared-home"
 
 type Props = {
   backLabel: string
@@ -39,7 +42,8 @@ export function AuthCardWrapper({
         <span>{backLabel}</span>
       </Link>
 
-      <div className="flex w-[470px] flex-col items-center gap-12">
+      <StaggerInView className="flex w-[470px] flex-col items-center gap-12">
+        <StaggerItem>
         <header className="flex w-[470px] flex-col items-center gap-8">
           <Image src="/auth/logo.svg" alt={logoAlt} width={122} height={131} priority />
 
@@ -52,12 +56,16 @@ export function AuthCardWrapper({
             {topSlot}
           </div>
         </header>
+        </StaggerItem>
 
+        <StaggerItem>
         <div className="flex w-[470px] flex-col gap-4">
           {children}
           {asideSlot}
         </div>
+        </StaggerItem>
 
+        <StaggerItem>
         <footer className="flex w-[470px] flex-col items-center gap-6">
           <div className="flex items-center gap-1 text-sm leading-[21px]">
             <span className="text-white">{footerPrefix}</span>
@@ -66,7 +74,8 @@ export function AuthCardWrapper({
             </Link>
           </div>
         </footer>
-      </div>
+        </StaggerItem>
+      </StaggerInView>
     </section>
   )
 }

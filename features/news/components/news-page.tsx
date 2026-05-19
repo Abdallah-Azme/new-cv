@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import { getNewsKeys } from "@/features/news/services/news.service"
-import { SectionShell, SiteHeader } from "@/features/shared-home"
+import { SectionShell, StaggerInView, StaggerItem } from "@/features/shared-home"
 
 const NEWS_IMAGES = {
   featured: "/home/content/news-feature.png",
@@ -28,8 +28,9 @@ export async function NewsPage() {
   return (
     <main className="flex-1 bg-white">
 
-      <SectionShell className="py-[71px] pb-[98px]">
-        <div className="space-y-16">
+      <SectionShell stagger={false} className="py-[71px] pb-[98px]">
+        <StaggerInView className="space-y-16">
+          <StaggerItem>
           <div className="max-w-[643px] space-y-6">
             <p className="inline-flex items-center gap-2 rounded-[8px] bg-[rgba(64,160,202,0.25)] px-4 py-2 text-[12px] leading-[1.16] text-[#40A0CA]">
               <SendHorizonal className="h-4 w-4" />
@@ -38,7 +39,9 @@ export async function NewsPage() {
             <h1 className="font-heading text-[36px] leading-normal font-bold text-[#171717]">{newsT("title")}</h1>
             <p className="max-w-[500px] text-[16px] leading-normal text-[#525252]">{newsT("description")}</p>
           </div>
+          </StaggerItem>
 
+          <StaggerItem>
           <article className="grid items-center gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <div className="overflow-hidden rounded-[16px]">
               <Image src={NEWS_IMAGES.featured} alt={t("featured.imageAlt")} width={860} height={445} className="h-[445px] w-full object-cover" />
@@ -61,10 +64,12 @@ export async function NewsPage() {
               </div>
             </div>
           </article>
+          </StaggerItem>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <StaggerInView className="grid gap-8 md:grid-cols-3">
             {keys.map((key) => (
-              <article key={key} className="space-y-4">
+              <StaggerItem key={key}>
+              <article className="space-y-4">
                 <div className="overflow-hidden rounded-[16px]">
                   <Image src={NEWS_IMAGES[key]} alt={t(`items.${key}.imageAlt`)} width={416} height={223} className="h-[223px] w-full object-cover" />
                 </div>
@@ -85,9 +90,10 @@ export async function NewsPage() {
                   </div>
                 </div>
               </article>
+              </StaggerItem>
             ))}
-          </div>
-        </div>
+          </StaggerInView>
+        </StaggerInView>
       </SectionShell>
 
     </main>
